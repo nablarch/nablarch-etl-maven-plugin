@@ -19,9 +19,27 @@
     <release.allow.snapshot>false</release.allow.snapshot>
   </properties>
 
+    <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>nablarch</id>
+      <name>Nablarch</name>
+      <email>nablarch@tis.co.jp</email>
+      <organization>Nablarch</organization>
+      <organizationUrl>https://github.com/nablarch</organizationUrl>
+    </developer>
+  </developers>
+
   <scm>
-    <developerConnection>scm:git:https://github.com/nablarch/nablarch-etl-maven-plugin.git</developerConnection>
-    <tag>HEAD</tag>
+    <connection>scm:git:git://github.com/nablarch/nablarch-etl-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://github.com/nablarch/nablarch-etl-maven-plugin.git</developerConnection>
+    <url>https://github.com/nablarch/nablarch-etl-maven-plugin/tree/master</url>
   </scm>
 
   <dependencies>
