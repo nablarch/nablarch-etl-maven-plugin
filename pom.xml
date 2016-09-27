@@ -8,6 +8,8 @@
   <packaging>maven-plugin</packaging>
 
   <name>Nablarch Maven Mojo for etl</name>
+  <description>Nablarch Maven Mojo for etl.</description>
+  <url>https://github.com/nablarch</url>
 
   <properties>
     <mavenPluginPluginVersion>3.4</mavenPluginPluginVersion>
