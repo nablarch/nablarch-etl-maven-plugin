@@ -61,3 +61,7 @@ gradle-app.setting
 *.iml
 
 *.log
+
+
+### Maven
+target/
