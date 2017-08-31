@@ -9,7 +9,6 @@ jdk:
 - oraclejdk7
 cache:
   directories:
-  - .autoconf
   - $HOME/.m2
 script:
 - git clone -b master https://github.com/nablarch/nablarch-ci-script.git $HOME/build-script/
