@@ -233,6 +233,12 @@
           <url>${develop_repo_url}/repo</url>
         </repository>
       </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>travis</id>
+          <url>${develop_repo_url}/repo</url>
+        </pluginRepository>
+      </pluginRepositories>
       <distributionManagement>
         <repository>
           <id>travis</id>
