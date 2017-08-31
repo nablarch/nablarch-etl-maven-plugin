@@ -21,7 +21,7 @@
     <release.allow.snapshot>false</release.allow.snapshot>
   </properties>
 
-    <licenses>
+  <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
       <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
@@ -159,7 +159,7 @@
           </archive>
         </configuration>
       </plugin>
-      
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -184,6 +184,13 @@
         </executions>
       </plugin>
     </plugins>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
+        <version>3.0.0</version>
+      </extension>
+    </extensions>
   </build>
 
   <reporting>
@@ -213,4 +220,24 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
+
+  <profiles>
+    <profile>
+      <id>travis</id>
+      <properties>
+        <gpg.skip>true</gpg.skip>
+      </properties>
+      <distributionManagement>
+        <repository>
+          <id>travis</id>
+          <url>dav:${develop_repo_url}/repo</url>
+        </repository>
+        <site>
+          <id>travis</id>
+          <url>dav:${develop_repo_url}/test-report/nablarch/${repo_name}/${timestamp}</url>
+        </site>
+      </distributionManagement>
+    </profile>
+  </profiles>
+
 </project>
