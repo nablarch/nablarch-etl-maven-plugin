@@ -227,26 +227,14 @@
       <properties>
         <gpg.skip>true</gpg.skip>
       </properties>
-      <repositories>
-        <repository>
-          <id>travis</id>
-          <url>${develop_repo_url}</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>travis</id>
-          <url>${develop_repo_url}</url>
-        </pluginRepository>
-      </pluginRepositories>
       <distributionManagement>
         <repository>
           <id>travis</id>
-          <url>dav:${develop_repo_url}</url>
+          <url>${develop_repo_url}</url>
         </repository>
         <site>
           <id>travis</id>
-          <url>dav:${develop_test_report_url}</url>
+          <url>${develop_test_report_url}</url>
         </site>
       </distributionManagement>
     </profile>
