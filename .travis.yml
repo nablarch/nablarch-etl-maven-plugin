@@ -1,18 +1,16 @@
-dist: precise
 language: java
 branches:
   only:
   - master
   - develop
 install: true
-jdk:
-- oraclejdk7
 cache:
   directories:
   - $HOME/.m2
 script:
 - git clone -b master https://github.com/nablarch/nablarch-ci-script.git $HOME/build-script/
   && chmod +x $HOME/build-script/travis-ci/*.sh
+- $HOME/build-script/travis-ci/install-oracle-jdk7.sh
 - $HOME/build-script/travis-ci/install-mvn-3.2.5.sh
 - $HOME/build-script/travis-ci/prepare_travis_settings.sh
 - $HOME/build-script/travis-ci/nablarch-mvn-build.sh -p travis
