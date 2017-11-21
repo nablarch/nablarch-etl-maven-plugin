@@ -14,7 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.maven.project.MavenProject;
 import org.hamcrest.CoreMatchers;
+
+import nablarch.common.dao.DatabaseMetaDataExtractor;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -24,6 +27,8 @@ import org.junit.rules.TemporaryFolder;
 
 import mockit.Deencapsulation;
 import mockit.Expectations;
+import mockit.Mock;
+import mockit.Mocked;
 
 /**
  * {@link ControlFileGeneratorMojo}のテストクラス。
@@ -37,16 +42,15 @@ public class ControlFileGeneratorMojoTest {
     public final ExpectedException expectedException = ExpectedException.none();
 
     private final ControlFileGeneratorMojo sut = new ControlFileGeneratorMojo();
-
+    
+    @Mocked
+    private MavenProject mockProject;
+    
     @Before
     public void setUp() throws Exception {
         sut.templateFilePath = "template/template.ftl";
         sut.outputPath = folder.getRoot();
-
-        new Expectations(sut) {{
-            Deencapsulation.invoke(sut, "createClassLoader");
-            result = Thread.currentThread().getContextClassLoader();
-        }};
+        sut.project = mockProject;
     }
 
     /**

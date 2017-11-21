@@ -24,7 +24,7 @@ import org.apache.maven.project.MavenProject;
 public class ControlFileGeneratorMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project}", required = true, readonly = true)
-    private MavenProject project;
+    MavenProject project;
 
     /** 出力先のディレクトリ */
     @Parameter(defaultValue = "${project.build.directory}/etl/ctrl-file")

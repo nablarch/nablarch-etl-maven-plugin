@@ -8,20 +8,26 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import nablarch.common.dao.DatabaseMetaDataExtractor;
 import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.CsvDataBindConfig;
 import nablarch.common.databind.csv.CsvFormat;
 import nablarch.etl.WorkItem;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+
+import mockit.Expectations;
+import mockit.Mocked;
 
 /**
  * {@link ControlFileGenerator}のテストクラス。
@@ -37,7 +43,7 @@ public class ControlFileGeneratorTest {
 
     @ClassRule
     public static TemporaryFolder temporaryFolder = new TemporaryFolder();
-
+    
     @After
     public void tearDown() throws Exception {
         if(reader != null){
@@ -234,7 +240,8 @@ public class ControlFileGeneratorTest {
             ignoreEmptyLine = true,
             lineSeparator = "\n",
             quoteMode = CsvDataBindConfig.QuoteMode.ALL,
-            requiredHeader = false)
+            requiredHeader = false,
+            emptyToNull = false)
     @Entity
     @Table(name = "PERSON_CUSTOM", schema = "CUSTOM")
     public static class PersonCustom extends WorkItem {
