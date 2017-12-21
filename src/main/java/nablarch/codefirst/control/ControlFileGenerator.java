@@ -58,8 +58,6 @@ public class ControlFileGenerator {
             throw new IllegalStateException("beanClass should extend " + WorkItem.class.getName());
         }
 
-        setupRepository();
-
         ControlDefinition control = createControlDefinition(beanClass);
 
         Writer writer = null;
@@ -76,19 +74,6 @@ public class ControlFileGenerator {
         } finally {
             FileUtil.closeQuietly(writer);
         }
-    }
-
-    /**
-     * リポジトリをセットアップする。
-     */
-    private static void setupRepository() {
-        SystemRepository.load(new ObjectLoader() {
-            @Override
-            public Map<String, Object> load() {
-                return Collections.<String, Object>singletonMap(
-                        "databaseMetaDataExtractor", new EmptyDatabaseMetadataExtractor());
-            }
-        });
     }
 
     /**
@@ -183,21 +168,5 @@ public class ControlFileGenerator {
      */
     private String escape(String str) {
         return str.replace("\r", "\\r").replace("\n", "\\n").replace("\t", "\\t");
-    }
-
-    /**
-     * 全て空を返す{@link DatabaseMetaDataExtractor}の実装。
-     */
-    private static class EmptyDatabaseMetadataExtractor extends DatabaseMetaDataExtractor {
-
-        @Override
-        public Map<String, Short> getPrimaryKeys(final String tableName) {
-            return Collections.emptyMap();
-        }
-
-        @Override
-        public Map<String, Integer> getSqlTypeMap(final String schemaName, final String tableName) {
-            return Collections.emptyMap();
-        }
     }
 }
