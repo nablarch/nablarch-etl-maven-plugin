@@ -9,7 +9,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -22,13 +21,10 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import nablarch.common.dao.ColumnMeta;
-import nablarch.common.dao.DatabaseMetaDataExtractor;
 import nablarch.common.dao.EntityUtil;
 import nablarch.common.databind.DataBindUtil;
 import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.CsvDataBindConfig;
-import nablarch.core.repository.ObjectLoader;
-import nablarch.core.repository.SystemRepository;
 import nablarch.core.util.FileUtil;
 import nablarch.etl.WorkItem;
 
@@ -58,8 +54,6 @@ public class ControlFileGenerator {
             throw new IllegalStateException("beanClass should extend " + WorkItem.class.getName());
         }
 
-        setupRepository();
-
         ControlDefinition control = createControlDefinition(beanClass);
 
         Writer writer = null;
@@ -76,19 +70,6 @@ public class ControlFileGenerator {
         } finally {
             FileUtil.closeQuietly(writer);
         }
-    }
-
-    /**
-     * リポジトリをセットアップする。
-     */
-    private static void setupRepository() {
-        SystemRepository.load(new ObjectLoader() {
-            @Override
-            public Map<String, Object> load() {
-                return Collections.<String, Object>singletonMap(
-                        "databaseMetaDataExtractor", new EmptyDatabaseMetadataExtractor());
-            }
-        });
     }
 
     /**
@@ -183,21 +164,5 @@ public class ControlFileGenerator {
      */
     private String escape(String str) {
         return str.replace("\r", "\\r").replace("\n", "\\n").replace("\t", "\\t");
-    }
-
-    /**
-     * 全て空を返す{@link DatabaseMetaDataExtractor}の実装。
-     */
-    private static class EmptyDatabaseMetadataExtractor extends DatabaseMetaDataExtractor {
-
-        @Override
-        public Map<String, Short> getPrimaryKeys(final String tableName) {
-            return Collections.emptyMap();
-        }
-
-        @Override
-        public Map<String, Integer> getSqlTypeMap(final String schemaName, final String tableName) {
-            return Collections.emptyMap();
-        }
     }
 }
