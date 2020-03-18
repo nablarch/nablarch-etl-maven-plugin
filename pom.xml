@@ -18,7 +18,7 @@
   </parent>
 
   <properties>
-    <mavenPluginPluginVersion>3.4</mavenPluginPluginVersion>
+    <mavenPluginPluginVersion>3.6.0</mavenPluginPluginVersion>
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss.SSSZ</maven.build.timestamp.format>
     <release.allow.snapshot>false</release.allow.snapshot>
   </properties>
