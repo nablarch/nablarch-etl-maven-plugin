@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.nablarch.etl</groupId>
   <artifactId>nablarch-etl-maven-plugin</artifactId>
-  <version>5-NEXT-SNAPSHOT</version>
+  <version>5u20</version>
   <packaging>maven-plugin</packaging>
 
   <name>Nablarch Maven Mojo for etl</name>
@@ -14,7 +14,7 @@
   <parent>
     <groupId>com.nablarch</groupId>
     <artifactId>nablarch-parent</artifactId>
-    <version>5-NEXT-SNAPSHOT</version>
+    <version>5u20</version>
   </parent>
 
   <properties>
