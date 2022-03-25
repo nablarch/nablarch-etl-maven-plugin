@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.nablarch.etl</groupId>
   <artifactId>nablarch-etl-maven-plugin</artifactId>
-  <version>5u20</version>
+  <version>5u21</version>
   <packaging>maven-plugin</packaging>
 
   <name>Nablarch Maven Mojo for etl</name>
@@ -14,7 +14,7 @@
   <parent>
     <groupId>com.nablarch</groupId>
     <artifactId>nablarch-parent</artifactId>
-    <version>5u20</version>
+    <version>5u21</version>
   </parent>
 
   <properties>
@@ -89,9 +89,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.18.1</version>
-        <configuration>
-          <argLine>-Dfile.encoding=UTF-8</argLine>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
