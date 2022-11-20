@@ -17,17 +17,12 @@ import java.util.Map;
 import org.apache.maven.project.MavenProject;
 import org.hamcrest.CoreMatchers;
 
-import nablarch.common.dao.DatabaseMetaDataExtractor;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 
-import mockit.Deencapsulation;
-import mockit.Expectations;
-import mockit.Mock;
 import mockit.Mocked;
 
 /**
