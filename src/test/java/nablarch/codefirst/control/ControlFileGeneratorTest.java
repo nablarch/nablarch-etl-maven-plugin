@@ -8,26 +8,20 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import nablarch.common.dao.DatabaseMetaDataExtractor;
 import nablarch.common.databind.csv.Csv;
 import nablarch.common.databind.csv.CsvDataBindConfig;
 import nablarch.common.databind.csv.CsvFormat;
 import nablarch.etl.WorkItem;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
-
-import mockit.Expectations;
-import mockit.Mocked;
 
 /**
  * {@link ControlFileGenerator}のテストクラス。
